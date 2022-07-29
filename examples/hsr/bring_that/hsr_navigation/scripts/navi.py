@@ -5,10 +5,11 @@ import tf
 import actionlib
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
-GOAL_POINTS = [(-2.58, -0.19, 0),
-               (4.83, -5.80, 0),
-               (4.73, 1.90, 0),
-               (0.0, 0.0, 0.0)]
+GOAL_POINTS = [(-2.73, -2.41, 0),
+               (-7.43, -2.49, 0),
+               (-7.16, 4.87, 0),
+               (-0.35, 4.09, 0.0),
+               (0, 0, 0)]
 
 TIMEOUT = 120
 
@@ -29,6 +30,7 @@ def main():
 
         base_ac.send_goal(goal_msg)
         succeeded = base_ac.wait_for_result(rospy.Duration(TIMEOUT))
+        print(succeeded)
         if succeeded:
             rospy.loginfo('reached to goal position')
         else:
